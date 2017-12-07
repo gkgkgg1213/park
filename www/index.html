@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+			<title>카메라 앱</title>
+
+
+		<link rel="stylesheet" href="jquery.mobile/jquery.mobile-1.4.5.min.css"/>
+		<script src="jquery.mobile/jquery-1.11.1.min.js"></script>
+		<script src="jquery.mobile/jquery.mobile-1.4.5.min.js"></script>
+		<script src="cordova.js"></script>
+
+		<script src="contactSearch.js"></script>
+		<scirpt src="contactDisplay.js"></scirpt>
+		<script src="contactAdd.js"></script>	
+		<script>
+			$(document).ready(function(){
+				initCordova();
+				$('#btnContactAllsearch').click(function(){
+					contactAllsearch();
+				});
+				$('#btnContactSearch').click(function(){
+					contactSearch();
+				});
+				$('#btnContactAdd').click(function(){
+					contactAdd();
+				});
+			});
+			function initCordova(){
+				document.addEventListener('deviceready', onDeviceReady, true);
+			}
+			function onDeviceReady(){
+				navigator.notification.alert('장치 준비됨', null, '코르도바 API');
+			}
+
+		</script>
+		
+		<style>
+		#displayArea { display: block; width:100%; }
+		</style>
+
+
+    </head>
+
+    <body>
+
+    	<div data-role="page" id="contactSearchPage">
+    		<div data-role="header" data-position="fixed">
+    			<h1>CordovaAPI</h1>
+    			</div>
+    			<div data-role="content">
+    				<div class="ui-bar ui-body-a">
+    					<div class="ui-bar ui-bar-b">
+    						<h3>연락처 전체 검색</h3>
+   	 						<input type="button" id="contactAllsearch" value="검색" />
+    				</div><br/>
+    			</div>
+    				<div class="body ui-body-a">
+    					<div class="ui-bar ui-bar-b">
+    						<h3>연락처 조건 검색</h3>
+    					</div><br/>
+    					<label for="editSearch">이름 : </label>
+    					<input type="search" id="searchKey"/>
+    					<input type="button" id="btnContactSearch" value="검색" />
+
+    			</div>
+    			<div data-role="footer" data-position="fixed">
+    				<div data-role="navbar">
+    					<ul>
+    						<li><a href="#contactSearchPage">연락처 검색하기</a></li>
+    						<li><a href="btnGetPhoto">연락처 추가하기></a></li>
+    					</ul>
+    				</div>
+    			</div>
+    		</div>
+
+
+    // 연락처 갬색 리스트 화면
+    <div data-role="page" id="contactListShowPage" data-add-back-btn="true">
+            <div data-role="header" data-position="fixed">
+                <h1>CordovaAPI</h1>
+            </div>
+                <div data-role="content" data-position="fixed">
+
+                    <h3>검색결과:</h3>
+                    <div>연락처 리스트 표시 영역</div>
+                </div>
+
+
+               
+                <div data-role="footer" data-position="fixed">
+                    <div data-role="navbar">
+                        <ul>
+                            <li><a href="#contactSearchPage">연락처 검색하기</a></li>
+                            <li><a href="#contactInputPage">연락처 추가하기></a></li>
+                        </ul>
+                    </div>
+                </div>
+    </div>
+
+    // 연락처 상세 정보 화면
+    <div data-role="page" id="contactInfoShowPage" data-position="fixed" data-add-back-btn="true">
+            <div data-role="header" data-position="fixed">
+                <h1>CordovaAPI</h1>
+            </div>
+                <div data-role="content">
+                    <div class="ui-bar ui-body-a">
+                        <div class="ui-bar ui-bar-b">
+                            <h3>연락처 정보</h3>
+                        </div>
+                        <div id="contactInfoArea">
+                            연락처 정보 표시 영역
+                        </div>
+                    </div>
+                </div>
+                <div data-role="footer" data-position="fixed">
+                    <div data-role="navbar">
+                        <ul>
+                            <li><a href="#contactSearchPage">연락처 검색하기</a></li>
+                            <li><a href="#contactInputPage">연락처 추가하기></a></li>
+                        </ul>
+                    </div>
+                </div>
+    </div>
+
+    <div data-role="page" id="contactInfoShowPage" data-position="fixed" data-add-back-btn="true">
+        <div data-role="header">
+            <h1>CordovaAPI</h1>
+        </div>
+            <div data-role="content">
+                <label for="fullName">이름 : </label>
+                <input type="text" name="fullName" id="fullName"/>
+                <label for="mobilePhone">전화(mobile) : </label>
+                <input type="tel" name="mobilePhone" id="mobilePhone"/>
+
+                <label for="workPhone">전화(work) : </label>
+                <input type="tel" name="workPhone" id="workPhone"/>
+
+                <label for="homeEmail">이메일(home) : </label>
+                <input type="email" name="homeEmail" id="homeEmail"/>
+
+                <label for="workAddress">장소(work) : </label>
+                <input type="text" name="workAddress" id="workAddress"/>
+
+                <label for="homeAddress">장소(home) : </label>
+                <input type="text" name="homeAddress" id="homeAddress"/>
+
+                <input type="button" id="btnContactAdd" value="연락처 추가c">
+            </div>
+
+            <div data-role="footer" data-position="fixed">
+                    <div data-role="navbar">
+                        <ul>
+                            <li><a href="#contactSearchPage">연락처 검색하기</a></li>
+                            <li><a href="#contactInputPage">연락처 추가하기></a></li>
+                        </ul>
+                    </div>
+                </div>
+
+
+
+
+    		
+        
+    </body>
+</html>
